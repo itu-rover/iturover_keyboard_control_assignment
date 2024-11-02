@@ -1,0 +1,21 @@
+<package>
+    <name>reactive_robot_sim</name>
+    <version>1.0.0</version>
+    <description> ITU ROVER Reactive Robot Assignment for ITU Rover 24'</description>
+    <maintainer email="berkayycavusoglu@gmail.com">Berkay Çavuşoğlu</maintainer>
+    <license>MIT</license>
+
+    <run_depend>turtlebot3</run_depend>
+    <run_depend>turtlebot3_simulations</run_depend>
+    <run_depend>gazebo_ros</run_depend>
+
+    <buildtool_depend>catkin</buildtool_depend>
+  <export>
+    <!-- gazebo_ros_paths_plugin automatically adds these to
+      GAZEBO_PLUGIN_PATH and GAZEBO_MODEL_PATH when you do this export inside
+      the package.xml file. You can than use URIs of type model://my_package/stuff. -->
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
+    <gazebo_ros plugin_path="${prefix}/../../devel/lib"/>
+  </export>
+</package>

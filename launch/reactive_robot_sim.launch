@@ -1,0 +1,41 @@
+<launch>
+    <arg name="gui" default="true"/>
+    <arg name="rviz" default="false"/>
+    <arg name="model" default="burger_rgbd" doc="{burger_rgbd, waffle, waffle_pi}"/>
+    <arg name="robot_margin" default="0.1"/>  
+    <arg if="$(eval model in ('burger_rgbd', 'burger'))" name="robot_radius" default="$(eval 0.105 + robot_margin)"/>
+    <arg if="$(eval model in ('waffle', 'waffle_pi'))" name="robot_radius" default="$(eval 0.22 + robot_margin)"/>
+    <arg name="robot_diameter" value="$(eval 2 * robot_radius)"/>
+    <arg name="ground_truth" default="false"/>
+    
+    <arg name="world" default="obs_corridor_world"/>
+    <arg if="$(eval world == 'obs_corridor_world')" name="spawn_args" default="-x -0.0 -y 9.5 -z 0.0 -R -0 -P -0 -Y -1.57"/>
+	    <arg name="turtlebot3_world" value="$(eval world in ('obs_corridor_world'))"/>
+    <arg name="robot_frame" default="base_footprint"/>
+
+    <env name="ROSCONSOLE_FORMAT" value="[${severity} ${walltime} ${node}] ${message}"/>
+    <env name="ROSCONSOLE_STDOUT_LINE_BUFFERED" value="1"/>
+
+    <param name="use_sim_time" value="true"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg if="$(arg turtlebot3_world)" name="world_name" value="$(find reactive_robot_sim)/worlds/$(arg world).world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder
+                    $(find reactive_robot_sim)/urdf/turtlebot3_$(arg model).urdf.xacro
+                    ground_truth:=$(arg ground_truth)"/>
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -model turtlebot3_$(arg model) $(arg spawn_args) -param robot_description"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz"
+          args="-d $(find reactive_robot_sim)/config/reactive_robot.rviz"/>
+
+</launch>
