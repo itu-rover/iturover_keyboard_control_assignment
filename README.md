@@ -46,7 +46,7 @@ Bu paketi klonlayıp derleyin.
 
 ```
 cd ~/rover_ws/src
-git clone ----------------
+git clone https://github.com/itu-rover/iturover_keyboard_control_assignment.git
 cd ..
 catkin build
 ```
