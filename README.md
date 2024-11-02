@@ -95,7 +95,7 @@ roslaunch reactive_robot_sim reactive_robot_sim.launch
 ## Extra
 <br>
 <br>
-Robotun üzerinde bir imu bulunmaktadır ve /imu topic'i üzerinden veri yayımlamaktadır. Arzu ettiğiniz takdirde bu veriyi kullanarak odometri yapıp odometri mesajı da yayımlayabilir, ve bunu rviz'de görüntüleyebilirsiniz.
+Robotun üzerinde bir imu bulunmaktadır ve /imu topic'i üzerinden veri yayımlamaktadır. Arzu ettiğiniz takdirde bu veriyi kullanarak odometri yapıp odometri mesajı da yayımlayabilir ve bunu rviz'de görüntüleyebilirsiniz.
 
 
 
