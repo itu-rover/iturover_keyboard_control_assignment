@@ -108,4 +108,4 @@ https://github.com/user-attachments/assets/b80053f3-0768-4468-8743-4c6b3294c505
 
 * https://wiki.ros.org/ROS/Tutorials
 * https://wiki.ros.org/Robots/TIAGo/Tutorials/motions/cmd_vel
-* http://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Odometry.html
+* https://wiki.ros.org/navigation/Tutorials/RobotSetup/Odom
