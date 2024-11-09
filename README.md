@@ -68,7 +68,7 @@ Turtlebot simülasyonunu kullanmak için gerekli paketleri kurun.
 sudo apt install ros-noetic-turtlebot3-simulations
 `
 
-Gazebo ve RViz'i çalıştırmak için aşağıdaki komutu terminal yardımıyla çalıştırın.
+Gazebo'yu çalıştırmak için aşağıdaki komutu terminal yardımıyla çalıştırın.
 
 `
 roslaunch reactive_robot_sim reactive_robot_sim.launch
